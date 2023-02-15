@@ -1,0 +1,28 @@
+.certificate {
+    width: 800px;
+    height: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid #000;
+    text-align: center;
+    padding: 30px;
+    box-sizing: border-box;
+  }
+  .header {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  .footer {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  .signature {
+    font-size: 18px;
+    font-style: italic;
+  }
+  #certcon{
+    background-image: url("https://media.istockphoto.com/id/1290215516/vector/light-blue-cyan-waves-sea-streaming-water-concept-flowing-subtle-curves-pastel-line-art.jpg?s=612x612&w=0&k=20&c=8nrCC4_Q-uhTTYli9bjzGWdx3FfJRyxPBsLFnmClM1A=");
+    object-fit: cover;
+  }

@@ -1,0 +1,52 @@
+pragma solidity ^0.8.0;
+
+contract CertificateGeneration {
+    struct Certificate {
+        string certificateID;
+        string candidateName;
+        string course;
+        uint256 date;
+        uint256 duration;
+        bool isValid;
+    }
+
+    mapping(string => Certificate) public certificates;
+
+    function generateCertificate(
+        string memory _certificateID,
+        string memory _candidateName,
+        string memory _course,
+        uint256 _date,
+        uint256 _duration
+    ) public {
+        certificates[_certificateID] = Certificate(
+            _certificateID,
+            _candidateName,
+            _course,
+            _date,
+            _duration,
+            true
+        );
+    }
+
+    function validateCertificate(string memory _certificateID) public view returns (bool) {
+        return certificates[_certificateID].isValid;
+    }
+
+    function getData(string memory _certificateID) public view returns (
+        string memory candidateName,
+        string memory course,
+        uint256 date,
+        uint256 duration,
+        bool isValid
+    ) {
+        Certificate memory certificate = certificates[_certificateID];
+        return (
+            certificate.candidateName,
+            certificate.course,
+            certificate.date,
+            certificate.duration,
+            certificate.isValid
+        );
+    }
+}
