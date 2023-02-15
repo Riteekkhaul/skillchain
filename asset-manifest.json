@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/skillchain/static/css/main.ded9f9ef.css",
+    "main.js": "/skillchain/static/js/main.6586cafd.js",
+    "static/js/787.034439c6.chunk.js": "/skillchain/static/js/787.034439c6.chunk.js",
+    "index.html": "/skillchain/index.html",
+    "main.ded9f9ef.css.map": "/skillchain/static/css/main.ded9f9ef.css.map",
+    "main.6586cafd.js.map": "/skillchain/static/js/main.6586cafd.js.map",
+    "787.034439c6.chunk.js.map": "/skillchain/static/js/787.034439c6.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ded9f9ef.css",
+    "static/js/main.6586cafd.js"
+  ]
+}
