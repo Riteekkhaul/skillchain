@@ -35,7 +35,7 @@ const Verify = () => {
     } catch (error) {
       console.error(error);
       alert("something went wrong...redirecting you to home");
-      navigate("/")
+      navigate("/skillchain");
     }
 
     const contractAddress="0xb31e01B6D9C28856DdC51e1127500Ed8EAa204cf";
