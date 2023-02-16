@@ -18,7 +18,7 @@ const PageNotFound = () => {
       </p>
   
       <Link
-        to="/"
+        to="/skillchain"
         class="inline-block px-5 py-3 mt-6 text-sm font-medium text-white bg-indigo-600 rounded hover:bg-indigo-700 focus:outline-none focus:ring"
       >
         Go Back Home
