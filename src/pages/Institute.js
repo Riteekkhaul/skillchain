@@ -29,14 +29,14 @@ const Institute = () => {
 
   const initWeb3 = async () => {
     // Connect to the Ethereum network
-    const web3 = new Web3(new Web3.providers.HttpProvider("https://goerli.infura.io/v3/25e446fb272c4971aa6ea2912eb09e59"));
-   // const web3 = new Web3(new Web3.providers.HttpProvider("HTTP://127.0.0.1:7545"));
+    //const web3 = new Web3(new Web3.providers.HttpProvider("https://goerli.infura.io/v3/25e446fb272c4971aa6ea2912eb09e59"));
+    const web3 = new Web3(new Web3.providers.HttpProvider("HTTP://127.0.0.1:7545"));
     web3.eth.defaultAccount = web3.eth.accounts[0];
-    
     const RemixContract = new web3.eth.Contract(
       abi,
-      "0x42a738d275bCf952cFd3F77037932c6fcD7dee85"  
-    );     //0xb31e01B6D9C28856DdC51e1127500Ed8EAa204cf   ganache contract  address
+     // "0x42a738d275bCf952cFd3F77037932c6fcD7dee85"  
+       "0xb31e01B6D9C28856DdC51e1127500Ed8EAa204cf"  // ganache contract  address
+    );    
     setWeb3(web3);
     setContract(RemixContract);
     // console.log(contract);
@@ -151,11 +151,11 @@ const Institute = () => {
         certificateParams._date,
         certificateParams._duration
       ).send({
-        from: account,
+        from:  account,
         gas: 300000
       });
 
-      console.log('tx receipt :-', JSON.stringify(txReceipt));
+    //  console.log('tx receipt :-', JSON.stringify(txReceipt));
 
       const txn_hash = txReceipt.transactionHash;
       const cert_id = response.data.result._id;
