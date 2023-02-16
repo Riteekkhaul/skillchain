@@ -27,7 +27,7 @@ const Verify = () => {
 
     const certId = JSON.parse(localStorage.getItem('certId'));
     try {
-      const response = await axios.post('http://localhost:5000/api/v1/user/getcert', {
+      const response = await axios.post('https://skillchain.cyclic.app/api/v1/user/getcert', {
         certId
       });
       console.log(response);

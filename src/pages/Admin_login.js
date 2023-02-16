@@ -36,7 +36,7 @@ const login = async (event) => {
   }
 
   try {
-    const response = await axios.post('http://localhost:5000/api/v1/admin/login', {
+    const response = await axios.post('https://skillchain.cyclic.app/api/v1/admin/login', {
       username,password
     });
 

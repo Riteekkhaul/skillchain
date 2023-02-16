@@ -76,7 +76,7 @@ const Institute = () => {
     }
 
     try {
-      const data = await axios.post('http://localhost:5000/api/v1/company/getcertificates', {
+      const data = await axios.post('https://skillchain.cyclic.app/api/v1/company/getcertificates', {
         companyId
       });
 
@@ -99,7 +99,7 @@ const Institute = () => {
       return
     }
     try {
-      const data = await axios.post('http://localhost:5000/api/v1/company/getcertificates', {
+      const data = await axios.post('https://skillchain.cyclic.app/api/v1/company/getcertificates', {
         companyId,
         skip
       });
@@ -123,7 +123,7 @@ const Institute = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:5000/api/v1/company/create_cert', {
+      const response = await axios.post('https://skillchain.cyclic.app/api/v1/company/create_cert', {
         candidateName, companyId, companyName, course, duration, date,
       });
 
@@ -162,7 +162,7 @@ const Institute = () => {
       console.log(txn_hash, cert_id);
 
       try {
-        const data = await axios.put('http://localhost:5000/api/v1/company/updatecert', {
+        const data = await axios.put('https://skillchain.cyclic.app/api/v1/company/updatecert', {
           txn_hash, cert_id
         });
         console.log(data.data.result);

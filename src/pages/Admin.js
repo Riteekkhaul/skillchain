@@ -51,7 +51,7 @@ const Admin = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:5000/api/v1/admin/register_company', {
+      const response = await axios.post('https://skillchain.cyclic.app/api/v1/admin/register_company', {
         companyName, email, password, contact
       });
 
@@ -77,7 +77,7 @@ const Admin = () => {
   const getAllCompanies = async () => {
 
     try {
-      const response = await axios.get('http://localhost:5000/api/v1/admin/getAllCompanies');
+      const response = await axios.get('https://skillchain.cyclic.app/api/v1/admin/getAllCompanies');
       console.log(response.data.companies);
       setcompanies(response.data.companies);
     } catch (error) {
@@ -90,7 +90,7 @@ const Admin = () => {
 
   const DeleteCompany=async()=>{
      try {
-      const response = await axios.delete(`http://localhost:5000/api/v1/admin/${compId}`);
+      const response = await axios.delete(`https://skillchain.cyclic.app/api/v1/admin/${compId}`);
        console.log(response.data);
        setStatus(true);
        setType("success");
