@@ -38,7 +38,7 @@ const HomePage = () => {
           <div className="bg-white px-8 w-2/5 py-24 rounded-lg shadow-lg">
             <h1 className="text-3xl font-bold mb-4">Generate Secure Digital <br />  
              <Typical
-               steps={['Academic..', 3000, 'Organizational..', 3000,'Medicle..' ,3000]}
+               steps={['Academic..', 3000, 'Organizational..', 3000,'Medical..' ,3000]}
                loop={Infinity}
                wrapper="p"
                className="my-4 font-extrabold text-transparent text-4xl bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600"

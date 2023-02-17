@@ -11,6 +11,7 @@ import Certificate from './components/Certificate';
 import PageNotFound from './pages/PageNotFound';
 import Email from './pages/Email';
 import Help from './pages/Help';
+import Notify from './components/Notify';
 
 
 
@@ -30,6 +31,7 @@ function App() {
         <Route path='*' element={<PageNotFound />} />
         <Route path='/mail' element={<Email />} />
         <Route path='/help' element={<Help />} />
+        <Route path='/newslater' element={<Notify />} />
        </Routes>
     </div>
   );

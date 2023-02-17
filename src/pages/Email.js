@@ -1,5 +1,6 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 const Email = () => {
     return (
@@ -41,7 +42,7 @@ const Email = () => {
                                 <div className="w-full">
                                     <h4 className="text-dark mb-1 text-xl font-bold">Our Location</h4>
                                     <p className="text-body-color text-base">
-                                        99 S.t Jomblo Park Pekanbaru 28292. Indonesia
+                                        Infotech Park , Hinjewadi Phase -1 , Pune - India.
                                     </p>
                                 </div>
                             </div>
@@ -68,7 +69,7 @@ const Email = () => {
                                 </div>
                                 <div className="w-full">
                                     <h4 className="text-dark mb-1 text-xl font-bold">Phone Number</h4>
-                                    <p className="text-body-color text-base">(+62)81 414 257 9980</p>
+                                    <p className="text-body-color text-base">(+91) 9767735958</p>
                                 </div>
                             </div>
                             <div className="mb-8 flex w-full max-w-[370px]">
@@ -88,7 +89,7 @@ const Email = () => {
                                 </div>
                                 <div className="w-full">
                                     <h4 className="text-dark mb-1 text-xl font-bold">Email Address</h4>
-                                    <p className="text-body-color text-base">info@yourdomain.com</p>
+                                    <p className="text-body-color text-base">riteekkhaul1610@gmail.com</p>
                                 </div>
                             </div>
                         </div>
@@ -127,7 +128,7 @@ const Email = () => {
                                 <div>
                                     <button
                                         type="submit"
-                                        className="bg-primary border-primary w-full rounded border p-3 text-white transition hover:bg-opacity-90"
+                                        className="bg-violet border-yellow w-full rounded border p-3 text-white transition hover:bg-opacity-90"
                                     >
                                         Send Message
                                     </button>
@@ -156,6 +157,7 @@ const Email = () => {
                 </div>
             </div>
         </section>
+        <Footer />
       </>
     )
 }

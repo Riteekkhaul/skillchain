@@ -16,7 +16,7 @@ const Stats = () => {
                 </div>
 
                 <div class="mt-8 sm:mt-12">
-                    <dl class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+                    <dl class="grid grid-cols-1 gap-4 sm:grid-cols-3 ">
                         <div
                             class="flex flex-col shadow-md shadow-gray-500 rounded-lg border border-gray-100 px-4 py-8 text-center dark:border-gray-800"
                         >

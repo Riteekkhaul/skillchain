@@ -6,7 +6,7 @@ const Features = () => {
              <h2 class="text-3xl text-white font-bold sm:text-4xl text-center py-8">Our Services </h2>
             <div class="container mx-auto">
                 <div class="-mx-4 flex flex-wrap">
-                    <div class="w-full px-4 md:w-1/2 xl:w-1/3">
+                    <div class="w-full px-4 md:w-1/2 xl:w-1/3 ">
                         <div class="mb-10 overflow-hidden rounded-lg bg-white shadow-md shadow-gray-500">
                             <img
                                 src="https://images.vexels.com/media/users/3/149723/isolated/preview/d45d650f852b9f95594040aa3d094fb4-diploma-scroll-3d-icon-by-vexels.png"

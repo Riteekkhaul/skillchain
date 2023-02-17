@@ -58,13 +58,14 @@ const Admin = () => {
       console.log(response.data);
       setStatus(true);
       setType("success");
-      setTitle("Certificate Created Succesfully!");
+      setTitle("Company Registered Succesfully!");
       setFormData({
         companyName: "",
         email: "",
         password: "",
         contact: ""
       })
+      getAllCompanies();
 
     } catch (error) {
       console.error(error);
@@ -116,7 +117,7 @@ const Admin = () => {
   useEffect(() => {
     checkAuth();
     getAllCompanies();
-  }, [])
+  }, [companies])
 
   return (
     <>

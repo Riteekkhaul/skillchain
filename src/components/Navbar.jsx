@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { AiOutlineHome } from "react-icons/ai";
+import { AiOutlineHome,AiOutlineNotification } from "react-icons/ai";
 import { GoMail } from "react-icons/go";
 import { BiHelpCircle } from "react-icons/bi";
 import { FaRegBuilding } from "react-icons/fa";
 import { RiAdminLine } from "react-icons/ri";
+import {BsInfoCircle} from 'react-icons/bs';
 
 const Navbar = () => {
   return (
@@ -27,7 +28,7 @@ const Navbar = () => {
       <div class="w-full block flex-grow lg:flex lg:items-center  lg:w-auto">
         <div class="text-sm lg:flex-grow">
           <Link
-             to="/"
+             to="/skillchain"
             class="block mt-4 lg:inline-block lg:mt-0 text-2xl text-teal-200 hover:text-white mr-4"
           >
             <AiOutlineHome />
@@ -43,6 +44,18 @@ const Navbar = () => {
             class="block mt-4 lg:inline-block lg:mt-0 text-2xl text-teal-200 hover:text-white"
           >
           < GoMail />
+          </Link>
+          <Link
+            to="/newslater"
+            class="block mt-4 ml-4 lg:inline-block lg:mt-0 text-2xl text-teal-200 hover:text-white"
+          >
+             <AiOutlineNotification/>
+          </Link>
+          <Link
+            to="/about"
+            class="block mt-4 ml-4 lg:inline-block lg:mt-0 text-2xl text-teal-200 hover:text-white"
+          >
+             <BsInfoCircle/>
           </Link>
         </div>
         <div>

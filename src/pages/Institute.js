@@ -179,6 +179,7 @@ const Institute = () => {
         duration: "",
         date: ""
       })
+      fetchCertificates();
 
     } catch (error) {
       console.error(error);
@@ -190,7 +191,7 @@ const Institute = () => {
     checkAuth();
     initWeb3();
     fetchCertificates();
-  }, [])
+  }, [certificates])
 
   return (
     <>
