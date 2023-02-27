@@ -7,11 +7,14 @@ import Web3 from "web3";
 import { abi } from "../utils";
 import Modal from "../components/Modal";
 import { AiOutlineLogout } from "react-icons/ai";
+import Loader from "../components/Loader";
+import Certicard from "../components/Certicard";
 
 
 const Institute = () => {
 
   const [isOpen, setIsOpen] = useState(false);
+  const [loader, setLoader] = useState(false);
   const [certificates, setCertificates] = useState([]);
   const [companyData, setcompanyData] = useState(JSON.parse(localStorage.getItem('company')));
   const [web3, setWeb3] = useState(null);
@@ -25,7 +28,7 @@ const Institute = () => {
     duration: 0,
     date: new Date(),
   });
-  const navigate =useNavigate();
+  const navigate = useNavigate();
 
   const initWeb3 = async () => {
     // Connect to the Ethereum network
@@ -34,9 +37,9 @@ const Institute = () => {
     web3.eth.defaultAccount = web3.eth.accounts[0];
     const RemixContract = new web3.eth.Contract(
       abi,
-     // "0x42a738d275bCf952cFd3F77037932c6fcD7dee85"  
-       "0xb31e01B6D9C28856DdC51e1127500Ed8EAa204cf"  // ganache contract  address
-    );    
+      // "0x42a738d275bCf952cFd3F77037932c6fcD7dee85"  
+      "0xb31e01B6D9C28856DdC51e1127500Ed8EAa204cf"  // ganache contract  address
+    );
     setWeb3(web3);
     setContract(RemixContract);
     // console.log(contract);
@@ -50,21 +53,21 @@ const Institute = () => {
     });
   };
 
-  const checkAuth =()=>{
+  const checkAuth = () => {
 
-    if(localStorage.getItem("cert_token")==undefined || localStorage.getItem("cert_token")==null ){
+    if (localStorage.getItem("cert_token") == undefined || localStorage.getItem("cert_token") == null) {
       navigate("/company_login");
     }
-    else{
+    else {
       return
     }
- }
- 
- const logOut=()=>{
-  localStorage.clear();
-  alert("Logged Out Successfully!")
-  navigate("/company_login")
-}
+  }
+
+  const logOut = () => {
+    localStorage.clear();
+    alert("Logged Out Successfully!")
+    navigate("/company_login")
+  }
 
   const fetchCertificates = async () => {
 
@@ -85,7 +88,7 @@ const Institute = () => {
       console.log(certificates)
     } catch (error) {
       console.error(error);
-      alert("Sorry! error in fetching certificates.");
+      alert(error.response.data);
     }
 
   }
@@ -93,7 +96,8 @@ const Institute = () => {
   const fetchNextPage = async (e) => {
     var companyId = companyData._id;
     //  console.log(companyId);
-    const skip=e.target.value;
+    setLoader(true);
+    const skip = e.target.value;
     if (!companyId) {
       alert("Error in loading company id!");
       return
@@ -106,15 +110,18 @@ const Institute = () => {
       const res = data.data;
       setCertificates(res.result);
       console.log(certificates)
+      setLoader(false);
     } catch (error) {
       console.error(error);
-      alert("Sorry! error in fetching certificates.");
+      setLoader(false);
+      alert(error.response.data);
     }
   }
 
   const createCert = async (event) => {
     event.preventDefault();
-   // console.log(formData);
+    // console.log(formData);
+    setLoader(true);
     const { candidateName, companyId, companyName, course, duration, date } = formData;
 
     if (!candidateName || !companyName || !companyId || !course || !duration || !date) {
@@ -151,11 +158,11 @@ const Institute = () => {
         certificateParams._date,
         certificateParams._duration
       ).send({
-        from:  account,
+        from: account,
         gas: 300000
       });
 
-    //  console.log('tx receipt :-', JSON.stringify(txReceipt));
+      //  console.log('tx receipt :-', JSON.stringify(txReceipt));
 
       const txn_hash = txReceipt.transactionHash;
       const cert_id = response.data.result._id;
@@ -170,6 +177,7 @@ const Institute = () => {
         console.error(error);
         alert("Sorry! error in updating certificates.");
       }
+      setLoader(false);
       alert("certificate created and published on blockchain successfully.")
       setFormData({
         candidateName: "",
@@ -183,6 +191,7 @@ const Institute = () => {
 
     } catch (error) {
       console.error(error);
+      setLoader(false);
       alert("Error in publishing certificate on blockchain!");
     }
   }
@@ -200,10 +209,10 @@ const Institute = () => {
         <div className="relative max-h-screen grid bg-gradient-to-r from-cyan-500 to-blue-500">
           <div className="flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0 ">
             <div className="relative sm:w-1/2 xl:w-4/5 md:w-4/5 transparent h-full overflow-auto hidden md:flex flex-auto items-center justify-center text-white bg-no-repeat bg-cover relative" >
-              <div className="absolute inset-0 z-0 mt-12 mx-12">
+              <div className="absolute inset-0 z-0 mt-12 mx-2">
                 <button className=" bg-white text-black rounded-lg py-3 w-full font-semibold" >Recentely generated Certificates</button>
-              </div>    
-              < Table certificates={certificates} />
+              </div>
+               <Certicard certificates={certificates} />
             </div>
             <div className="md:flex md:items-center md:justify-left sm:w-auto md:h-full xl:w-1/2 10 lg:p-14 sm:rounded-lg md:rounded-none ">
               <div className="max-w-xl w-full space-y-12">
@@ -244,13 +253,16 @@ const Institute = () => {
         <Modal setIsOpen={setIsOpen} isOpen={isOpen} />
         <AiOutlineLogout onClick={logOut} className='fixed bottom-12 right-8 text-red text-4xl pointer' />
         <div className="bg-gradient-to-r from-cyan-500 to-blue-500 pl-20">
-        <span className="text-white">Next page :</span>
-        <button onClick={fetchNextPage} value="2" className=" bg-gradient-to-r mb-1 from-green-300 via-blue-500 to-purple-600 text-white rounded-lg py-1 px-4 mx-4 font-semibold">2</button>
-        <button onClick={fetchNextPage} value="3" className=" bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 text-white rounded-lg py-1 px-4 mx-4 font-semibold">3</button>  
-        <button onClick={fetchNextPage} value="4" className=" bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 text-white rounded-lg py-1 px-4 mx-4 font-semibold">4</button>    
-        <button onClick={fetchNextPage} value="5"className=" bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 text-white rounded-lg py-1 px-4 mx-4 font-semibold">5</button>
+          <span className="text-white">Next page :</span>
+          <button onClick={fetchNextPage} value="2" className=" bg-gradient-to-r mb-1 from-green-300 via-blue-500 to-purple-600 text-white rounded-lg py-1 px-4 mx-4 font-semibold">2</button>
+          <button onClick={fetchNextPage} value="3" className=" bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 text-white rounded-lg py-1 px-4 mx-4 font-semibold">3</button>
+          <button onClick={fetchNextPage} value="4" className=" bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 text-white rounded-lg py-1 px-4 mx-4 font-semibold">4</button>
+          <button onClick={fetchNextPage} value="5" className=" bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 text-white rounded-lg py-1 px-4 mx-4 font-semibold">5</button>
         </div>
       </div>
+      {
+        loader ? <Loader /> : <></>
+      }
     </>
   )
 }

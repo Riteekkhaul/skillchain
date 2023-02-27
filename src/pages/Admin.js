@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useNavigate , Link } from 'react-router-dom';
 import { AiOutlineLogout } from "react-icons/ai";
 import ReactJsAlert from "reactjs-alert";
+import Loader from "../components/Loader";
 
 const Admin = () => {
 
@@ -20,6 +21,7 @@ const Admin = () => {
   const [status, setStatus] = useState(false);
   const [type, setType] = useState("");
   const [title, setTitle] = useState("");
+  const [loader, setLoader] =useState(false);
 
   const handleChange = (event) => {
     console.log(formData);
@@ -41,6 +43,7 @@ const Admin = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setLoader(true);
     const { companyName, email, password, contact } = formData;
 
     if (!email || !companyName || !contact || !password) {
@@ -57,6 +60,7 @@ const Admin = () => {
 
       console.log(response.data);
       setStatus(true);
+      setLoader(false);
       setType("success");
       setTitle("Company Registered Succesfully!");
       setFormData({
@@ -69,6 +73,7 @@ const Admin = () => {
 
     } catch (error) {
       console.error(error);
+      setLoader(false);
       setStatus(true);
       setType("error");
       setTitle("Something Went Wrong");
@@ -76,13 +81,15 @@ const Admin = () => {
   };
 
   const getAllCompanies = async () => {
-
+ 
     try {
       const response = await axios.get('https://skillchain.cyclic.app/api/v1/admin/getAllCompanies');
       console.log(response.data.companies);
       setcompanies(response.data.companies);
+    
     } catch (error) {
       console.error(error);
+    
       setStatus(true);
       setType("error");
       setTitle("Error in fetching company data!");
@@ -90,15 +97,18 @@ const Admin = () => {
   }
 
   const DeleteCompany=async()=>{
+    setLoader(true);
      try {
       const response = await axios.delete(`https://skillchain.cyclic.app/api/v1/admin/${compId}`);
        console.log(response.data);
        setStatus(true);
        setType("success");
        setTitle("Company / Institute removed Successfully!");
+       setLoader(false);
        alert("Company / Institute removed Successfully!");
     } catch (error) {
       console.error(error.message);
+      setLoader(false);
       setStatus(true);
       setType("error");
       setTitle("Something Went Wrong");
@@ -246,6 +256,9 @@ const Admin = () => {
       </form>
     </div>
     <ReactJsAlert status={status} type={type}  title={title} Close={() => setStatus(false)}  />
+    {
+      loader ? <Loader /> :<></>
+   }  
     </>
   );
 };

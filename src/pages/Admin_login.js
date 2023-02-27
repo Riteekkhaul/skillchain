@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import ReactJsAlert from "reactjs-alert";
+import Loader from "../components/Loader";
 
 
 const Admin_Login=()=> {
@@ -12,6 +13,7 @@ const Admin_Login=()=> {
   const [status, setStatus] = useState(false);
   const [type, setType] = useState("");
   const [title, setTitle] = useState("");
+  const [loader, setLoader] =useState(false);
 
   const [formData, setFormData] = useState({
     username: "",
@@ -29,6 +31,7 @@ const Admin_Login=()=> {
 
 const login = async (event) => {
   event.preventDefault();
+  setLoader(true);
   const {username,password} =formData;
   if (!username || !password) {
     setError("Email and password are required");
@@ -45,12 +48,14 @@ const login = async (event) => {
     setStatus(true);
     setType("success");
     setTitle("Logged in success!");
+    setLoader(false);
     navigate("/admin");
   } catch (error) {
     console.error(error);
     setStatus(true);
     setType("warning");
     setTitle("Username or Password wrong");
+    setLoader(false);
   }
   setError("");
 };
@@ -103,6 +108,9 @@ const login = async (event) => {
         </form>
       </div>
     </div>
+   {
+      loader ? <Loader /> :<></>
+   }  
   </>
   );
 }

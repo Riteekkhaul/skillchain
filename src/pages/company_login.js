@@ -3,11 +3,13 @@ import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import ReactJsAlert from "reactjs-alert";
+import Loader from "../components/Loader";
 
 const Company_Login=()=> {
  
   const [error, setError] = useState("");
   const navigate=useNavigate();
+  const [loader, setLoader] =useState(false);
   const [status, setStatus] = useState(false);
   const [type, setType] = useState("");
   const [title, setTitle] = useState("");
@@ -26,7 +28,7 @@ const Company_Login=()=> {
 
   const login = async (event) => {
   event.preventDefault();
-  
+  setLoader(true);
   const {email,password} =formData;
   if (!email || !password) {
     setError("Email and password are required");
@@ -48,13 +50,14 @@ const Company_Login=()=> {
      setStatus(true);
      setType("success");
      setTitle("Logged in success!");
-    alert("login success!")
+     setLoader(false);
     navigate("/institute");
   } catch (error) {
     console.error(error);
     setStatus(true);
     setType("warning");
     setTitle("Username or Password wrong");
+    setLoader(false);
   }
   setError("");
 };
@@ -109,6 +112,9 @@ const Company_Login=()=> {
     </div>
   </div>
   <ReactJsAlert status={status} type={type}  title={title} Close={() => setStatus(false)}  />
+  {
+      loader ? <Loader /> :<></>
+   }  
   </>
   );
 }

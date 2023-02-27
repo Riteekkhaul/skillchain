@@ -12,6 +12,9 @@ const Verify = () => {
   const [hide, sethide] = useState(false);
   const [certDetails, setCertDetails] = useState({});
   const [blockData, setblockData] = useState({});
+  const [validated, setvalidated] = useState(false);
+  const [isValid, setisValid] = useState(false);
+  const [revoked, setrevoked] = useState(false);
 
   const PrintCert = () => {
     sethide(true);
@@ -52,7 +55,13 @@ const Verify = () => {
     const web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:7545'));
     const contract = new web3.eth.Contract(abi, contractAddress);
     const txnRes = await contract.methods.validateCertificate(certId).call();
-    alert(txnRes);
+    if(txnRes){
+      setvalidated(true);
+      setisValid(true);
+    }else{
+      setvalidated(true);
+      setrevoked(true);
+    }
   }
 
   const InvalidateCert=async()=>{
@@ -86,14 +95,34 @@ const Verify = () => {
         <Certificate certData={certDetails} />
         {hide ? <><span>Not visible bro...</span></> : <>
           <div className="w-96 h-auto mx-8 bg-white border border-black mt-4 mb-20 p-8 box-border">
-            <h3> Data Fetched from Blockchain for Certificate Id <span className='font-bold'> {certDetails._id} </span></h3>
+            <h3 className='mb-4 bg-gray-200 rounded-md px-2'> Data Fetched from Blockchain for Certificate Id <span className='font-bold'> {certDetails._id} </span></h3>
             <p> Candidate Name : {blockData.candidateName} </p>    
             <p> Course : {blockData.course}   </p>
             <p> CompanyName : {blockData._companyName}  </p>
-            <p> Date : {blockData.date}   </p>
+            <p> Date : {blockData.date} - UNIX epoch-time   </p>
             <p> Duration : {blockData.duration}  </p>
-           <button onClick={validateCert} className="px-4 py-2 mt-12 mb-4 ml-16 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">Validate Certificate</button><br/>
-           <button type="button" onClick={PrintCert} class="text-white bg-blue-700 mt-8 hover:bg-blue-800 focus:ring-4 
+            {
+              validated? <>
+                {
+                  isValid?<>
+                           <img className='w-28 h-28 ml-24' src='https://uploads.sitepoint.com/wp-content/uploads/2015/07/1436013803checkbox-1024x1024.jpg' alt='valid' />
+                           <p className='text-green-800 font-bold'>Congratulations! This Certificate is Valid!</p>
+                          </>:<></>
+                }
+                {
+                  revoked?<>
+                           <img className='w-28 h-28 ml-24' src='https://luckylucerosbailbonds.com/wp-content/uploads/2020/02/97551323_m.jpg' alt='valid' />
+                           <p className='text-red-600 font-bold'>Soory! This Certificate has been Revoked!</p>
+                          </>:<></>
+                }
+              </>
+               :
+              <button onClick={validateCert} 
+              className="px-4 py-2 mt-8 mb-4 ml-16 tracking-wide text-white transition-colors duration-200 transform bg-purple-700
+              rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">Validate Certificate</button>
+            }
+           <br/>
+           <button type="button" onClick={PrintCert} class="text-white bg-blue-700 mt-2 hover:bg-blue-800 focus:ring-4 
         focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 
         focus:outline-none dark:focus:ring-blue-800">Print Certificate</button>
             <button type="button" onClick={verifyOnEtherscan} class="focus:outline-none text-white bg-green-700 
