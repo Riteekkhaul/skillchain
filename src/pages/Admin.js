@@ -24,7 +24,7 @@ const Admin = () => {
   const [loader, setLoader] =useState(false);
 
   const handleChange = (event) => {
-    console.log(formData);
+   // console.log(formData);
     setFormData({
       ...formData,
       [event.target.name]: event.target.value
@@ -32,7 +32,7 @@ const Admin = () => {
   };
 
   const checkAuth =()=>{
-    console.log(localStorage.getItem("cert_token"))
+ //   console.log(localStorage.getItem("cert_token"))
     if(localStorage.getItem("cert_token")==undefined || localStorage.getItem("cert_token")==null ){
       navigate("/admin_login");
     }
@@ -58,7 +58,7 @@ const Admin = () => {
         companyName, email, password, contact
       });
 
-      console.log(response.data);
+   //   console.log(response.data);
       setStatus(true);
       setLoader(false);
       setType("success");
@@ -84,7 +84,7 @@ const Admin = () => {
  
     try {
       const response = await axios.get('https://skillchain.cyclic.app/api/v1/admin/getAllCompanies');
-      console.log(response.data.companies);
+   //   console.log(response.data.companies);
       setcompanies(response.data.companies);
     
     } catch (error) {
@@ -100,7 +100,7 @@ const Admin = () => {
     setLoader(true);
      try {
       const response = await axios.delete(`https://skillchain.cyclic.app/api/v1/admin/${compId}`);
-       console.log(response.data);
+     //  console.log(response.data);
        setStatus(true);
        setType("success");
        setTitle("Company / Institute removed Successfully!");
@@ -127,7 +127,7 @@ const Admin = () => {
   useEffect(() => {
     checkAuth();
     getAllCompanies();
-  }, [companies])
+  }, [])
 
   return (
     <>
@@ -192,19 +192,19 @@ const Admin = () => {
         </form>
         <div className='bg-white w-3/5 p-6 rounded-lg m-4 shadow-lg shadow-purple-800/50'>
           <h2 className='text-gray-700 text-xl font-bold'>Registered Companies / Institute</h2> <br />
-          <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" className="px-6 py-3">
                   Company ID 
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" className="px-6 py-3">
                   Name
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" className="px-6 py-3">
                   Email
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" className="px-6 py-3">
                   Contact
                 </th>
               </tr>
@@ -236,21 +236,21 @@ const Admin = () => {
         </div>
       </div>
 
-      <div class="mx-auto mt-4 max-w-xl">
-      <form onSubmit={DeleteCompany} class="sm:flex sm:gap-4">
-        <div class="sm:flex-1">
+      <div className="mx-auto mt-4 max-w-xl">
+      <form onSubmit={DeleteCompany} className="sm:flex sm:gap-4">
+        <div className="sm:flex-1">
           <input
             type="text"
             placeholder="Company's Unique Id"
             onChange={(e)=>setcompId(e.target.value)}
-            class="w-full rounded-md border-orange-300 bg-white p-3 text-gray-700 shadow-sm transition focus:border-white focus:outline-none ring focus:ring-yellow-400 focus:ring focus:ring-yellow-400"
+            className="w-full rounded-md border-orange-300 bg-white p-3 text-gray-700 shadow-sm transition focus:border-white focus:outline-none ring focus:ring-yellow-400 focus:ring focus:ring-yellow-400"
           />
         </div>
 
         <button
           type="submit"
-          class="group mt-4 flex w-full items-center justify-center rounded-md bg-rose-600 px-5 py-3 text-white transition focus:outline-none focus:ring focus:ring-yellow-400 sm:mt-0 sm:w-auto" >
-          <span class="text-sm font-medium"> Delete </span>
+          className="group mt-4 flex w-full items-center justify-center rounded-md bg-rose-600 px-5 py-3 text-white transition focus:outline-none focus:ring focus:ring-yellow-400 sm:mt-0 sm:w-auto" >
+          <span className="text-sm font-medium"> Delete </span>
         </button>
          <AiOutlineLogout onClick={logOut} className='fixed bottom-4 right-8 text-red text-4xl pointer' />
       </form>

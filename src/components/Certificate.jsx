@@ -7,7 +7,7 @@ function Certificate({certData}){
   return (
     <>
     <div id="certcon" className="w-800 h-600 mt-4 mb-20 mx-auto bg-white border border-black text-center box-border">
-      <div className="text-3xl px-24 font-bold mt-4 mb-16">Certificate of Achievement</div>
+      <div className="text-3xl px-24 font-bold mt-12 mb-8">Certificate of Achievement</div>
       <div className="text-lg mb-12">
         This certificate is presented to 
         <br />

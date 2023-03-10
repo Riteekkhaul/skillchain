@@ -12,7 +12,7 @@ import PageNotFound from './pages/PageNotFound';
 import Email from './pages/Email';
 import Help from './pages/Help';
 import Notify from './components/Notify';
-
+import About from './pages/About';
 
 
 function App() {
@@ -31,6 +31,7 @@ function App() {
         <Route path='*' element={<PageNotFound />} />
         <Route path='/mail' element={<Email />} />
         <Route path='/help' element={<Help />} />
+        <Route path='/about' element={<About />} />
         <Route path='/newslater' element={<Notify />} />
        </Routes>
     </div>

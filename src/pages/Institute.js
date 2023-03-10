@@ -85,7 +85,7 @@ const Institute = () => {
 
       const res = data.data;
       setCertificates(res.result);
-      console.log(certificates)
+    //  console.log(certificates)
     } catch (error) {
       console.error(error);
       alert(error.response.data);
@@ -200,7 +200,8 @@ const Institute = () => {
     checkAuth();
     initWeb3();
     fetchCertificates();
-  }, [certificates])
+   // console.log("called");
+  }, [])
 
   return (
     <>
@@ -250,7 +251,6 @@ const Institute = () => {
             </div>
           </div>
         </div>
-        <Modal setIsOpen={setIsOpen} isOpen={isOpen} />
         <AiOutlineLogout onClick={logOut} className='fixed bottom-12 right-8 text-red text-4xl pointer' />
         <div className="bg-gradient-to-r from-cyan-500 to-blue-500 pl-20">
           <span className="text-white">Next page :</span>
