@@ -33,6 +33,7 @@ function App() {
         <Route path='/help' element={<Help />} />
         <Route path='/about' element={<About />} />
         <Route path='/newslater' element={<Notify />} />
+      
        </Routes>
     </div>
   );

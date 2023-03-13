@@ -10,6 +10,7 @@ import Footer from '../components/Footer';
 import Features from '../components/Features';
 import Tabs from '../components/Tabs';
 import Typical from 'react-typical'
+import BenefitsRender from '../components/Benefits';
 
 const HomePage = () => {
 
@@ -67,6 +68,7 @@ const HomePage = () => {
     <Services />
     <Stats />
     <Tabs />
+    <BenefitsRender />
     <Testimonials />
     <Footer />
     </div>

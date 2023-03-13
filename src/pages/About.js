@@ -10,10 +10,10 @@ const About = () => {
   }
   return (
     <div className='about-con'>
+          <p className='text-center text-xl font-bold pt-4'>Cert-Chain : A Blockchain Based Certificate Generation and Verification Decentralized Web Application</p>
+          <p className='text-center'> Developed By :- </p>
       <div className='about-box'>
-      <div className='profile-con'>
         <div id='pro'  >  </div>
-      </div>
       <div className='bio'>
         <h3>Riteek R. Khaul</h3>
         <p>Email : riteekkhaul1610@gmail.com</p>

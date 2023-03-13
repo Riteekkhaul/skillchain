@@ -44,9 +44,13 @@ const Verify = () => {
     const contractAddress="0xb31e01B6D9C28856DdC51e1127500Ed8EAa204cf";
     const web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:7545'));
     const contract = new web3.eth.Contract(abi, contractAddress);
-    const txReceipt = await contract.methods.getData(certId).call();
-    setblockData(txReceipt);
- //   console.log(blockData.candidateName)
+    try {
+      const txReceipt = await contract.methods.getData(certId).call();
+      setblockData(txReceipt);
+    } catch (error) {
+      alert("Error in fetching data for given Cert-Id from Blockchain!")
+    }
+
   }
 
   const validateCert=async()=>{
@@ -64,24 +68,9 @@ const Verify = () => {
     }
   }
 
-  const InvalidateCert=async()=>{
-
-    const certId = JSON.parse(localStorage.getItem('certId'));
-    const contractAddress="0xb31e01B6D9C28856DdC51e1127500Ed8EAa204cf";
-    const web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:7545'));
-    const contract = new web3.eth.Contract(abi, contractAddress);
-    console.log("reached")
-    const txnRes = await contract.methods.invalidateCertificate(certId).send({
-      from: "0xcf788751A5C223d667a4a76Fadc9DA1B1a46c2D3",
-      gas: 300000
-   });
-    alert("Invalidated the certificate Successfully");
-
-  }
 
   const verifyOnEtherscan = () => {
-    window.open('https://codingbeautydev.com', '_blank', 'noreferrer');
-    window.print();
+    window.open('https://goerli.etherscan.io/', '_blank', 'noreferrer');
   }
 
   useEffect(() => {

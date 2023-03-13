@@ -11,8 +11,9 @@ import Loader from "../components/Loader";
 import Certicard from "../components/Certicard";
 
 
-const Institute = () => {
+const InstituteRender = ({ color }) => {
 
+  const [openTab, setOpenTab] = React.useState(1);
   const [isOpen, setIsOpen] = useState(false);
   const [loader, setLoader] = useState(false);
   const [certificates, setCertificates] = useState([]);
@@ -200,66 +201,99 @@ const Institute = () => {
     checkAuth();
     initWeb3();
     fetchCertificates();
-   // console.log("called");
   }, [])
 
   return (
-    <>
-      <Navbar />
-      <div>
-        <div className="relative max-h-screen grid bg-gradient-to-r from-cyan-500 to-blue-500">
-          <div className="flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0 ">
-            <div className="relative sm:w-1/2 xl:w-4/5 md:w-4/5 transparent h-full overflow-auto hidden md:flex flex-auto items-center justify-center text-white bg-no-repeat bg-cover relative" >
-              <div className="absolute inset-0 z-0 mt-12 mx-2">
-                <button className=" bg-white text-black rounded-lg py-3 w-full font-semibold" >Recentely generated Certificates</button>
-              </div>
-               <Certicard certificates={certificates} />
-            </div>
-            <div className="md:flex md:items-center md:justify-left sm:w-auto md:h-full xl:w-1/2 10 lg:p-14 sm:rounded-lg md:rounded-none ">
-              <div className="max-w-xl w-full space-y-12">
-                <div className="lg:text-left text-center">
-                  <div className="flex items-center justify-center ">
-                    <div className="bg-white flex flex-col w-80 border border-gray-900 rounded-lg px-8 ">
-                      <form className="flex flex-col space-y-4" onSubmit={createCert}>
-                        <input type="text"
-                          name='candidateName'
-                          value={formData.candidateName}
-                          onChange={handleChange}
-                          placeholder="Candidate Name" className="border rounded-lg py-3 px-3 mt-2 bg-black border-indigo-600 placeholder-white-500 text-white" />
-                        <input type="text"
-                          onChange={handleChange}
-                          name='course'
-                          value={formData.course} placeholder="Course Name" className="border rounded-lg py-3 px-3 bg-black border-indigo-600 placeholder-white-500 text-white" />
-                        <input type="text"
-                          onChange={handleChange}
-                          name='companyName'
-                          value={formData.companyName} placeholder="Company / Institute" className="border rounded-lg py-3 px-3 mt-2 bg-black border-indigo-600 placeholder-white-500 text-white" />
-                        <input type="number"
-                          onChange={handleChange}
-                          name='duration'
-                          value={formData.duration} placeholder="Course Duration in months" className="border rounded-lg py-3 px-3 mt-2 bg-black border-indigo-600 placeholder-white-500 text-white" />
-                        <input type="date"
-                          onChange={handleChange}
-                          name='date'
-                          value={formData.date} placeholder="Date of issue" className="border rounded-lg py-3 px-3 mt-2 bg-white border-indigo-600 placeholder-white-500 text-white" />
-                        <button type="submit" className=" bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 text-white rounded-lg py-3 font-semibold" >Create Certificates</button> <br />
-                      </form>
+         <>
+            <Navbar />
+            <div className="flex flex-wrap w-full bg-gradient-to-r from-cyan-500 to-blue-500">
+                <div className="w-full">
+                    <ul className="flex mb-0 list-none flex-wrap mx-2 pt-3 pb-4 flex-row" role="tablist"  >
+                        <li className="-mb-px mr-2 last:mr-0 flex-auto text-center cursor-pointer">
+                            <a
+                                className={
+                                    "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
+                                    (openTab === 1
+                                        ? "text-white bg-" + color + "-600"
+                                        : "text-" + color + "-600 bg-white")
+                                }
+                                onClick={e => {
+                                    e.preventDefault();
+                                    setOpenTab(1);
+                                }}
+                                data-toggle="tab"
+                                role="tablist"
+                            >
+                                Recently Generated Certificates
+                            </a>
+                        </li>
+                        <li className="-mb-px mr-2 last:mr-0 flex-auto text-center cursor-pointer">
+                            <a
+                                className={
+                                    "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
+                                    (openTab === 2
+                                        ? "text-white bg-" + color + "-600"
+                                        : "text-" + color + "-600 bg-white")
+                                }
+                                onClick={e => {
+                                    e.preventDefault();
+                                    setOpenTab(2);
+                                }}
+                                data-toggle="tab"
+                                role="tablist"
+                            >
+                                Generate Certificate
+                            </a>
+                        </li>
+                    </ul>
+                    <div className="relative flex flex-col min-w-0 break-words bg-gradient-to-r from-cyan-500 to-blue-500 w-full shadow-lg rounded">
+                        <div className="px-4 flex-auto">
+                            <div className="tab-content tab-space">
+                                <div className={openTab === 1 ? "block" : "hidden"} id="link1">
+                                    <Certicard certificates={certificates} />
+                                    <div className="mt-8 pl-8">
+                                        <span className="text-white">Page No. :</span>
+                                        <button onClick={fetchNextPage} value="0" className=" bg-gradient-to-r mb-1 from-green-300 via-blue-500 to-purple-600 text-white rounded-lg py-1 px-4 mx-4 font-semibold">1</button>
+                                        <button onClick={fetchNextPage} value="2" className=" bg-gradient-to-r mb-1 from-green-300 via-blue-500 to-purple-600 text-white rounded-lg py-1 px-4 mx-4 font-semibold">2</button>
+                                        <button onClick={fetchNextPage} value="3" className=" bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 text-white rounded-lg py-1 px-4 mx-4 font-semibold">3</button>
+                                        <button onClick={fetchNextPage} value="4" className=" bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 text-white rounded-lg py-1 px-4 mx-4 font-semibold">4</button>
+                                        <button onClick={fetchNextPage} value="5" className=" bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 text-white rounded-lg py-1 px-4 mx-4 font-semibold">5</button>
+                                    </div>
+                                </div>
+                                <div className={openTab === 2 ? "block" : "hidden"} id="link2">
+                                    <div className="bg-white flex flex-col w-80 border border-gray-900 rounded-lg px-8 mb-12 ">
+                                        <form className="flex flex-col space-y-4" onSubmit={createCert}>
+                                            <input type="text"
+                                                name='candidateName'
+                                                value={formData.candidateName}
+                                                onChange={handleChange}
+                                                placeholder="Candidate Name" className="border rounded-lg py-3 px-3 mt-2 bg-black border-indigo-600 placeholder-white-500 text-white" />
+                                            <input type="text"
+                                                onChange={handleChange}
+                                                name='course'
+                                                value={formData.course} placeholder="Course Name" className="border rounded-lg py-3 px-3 bg-black border-indigo-600 placeholder-white-500 text-white" />
+                                            <input type="text"
+                                                onChange={handleChange}
+                                                name='companyName'
+                                                value={formData.companyName} placeholder="Company / Institute" className="border rounded-lg py-3 px-3 mt-2 bg-black border-indigo-600 placeholder-white-500 text-white" />
+                                            <input type="number"
+                                                onChange={handleChange}
+                                                name='duration'
+                                                value={formData.duration} placeholder="Course Duration in months" className="border rounded-lg py-3 px-3 mt-2 bg-black border-indigo-600 placeholder-white-500 text-white" />
+                                            <input type="date"
+                                                onChange={handleChange}
+                                                name='date'
+                                                value={formData.date} placeholder="Date of issue" className="border rounded-lg py-3 px-3 mt-2 bg-white border-indigo-600 placeholder-white-500 text-white" />
+                                            <button type="submit" className=" bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 text-white rounded-lg py-3 font-semibold" >Create Certificates</button> <br />
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </div>
+                <AiOutlineLogout onClick={logOut} className='fixed bottom-8 right-8 text-red text-4xl cursor-pointer' />
             </div>
-          </div>
-        </div>
-        <AiOutlineLogout onClick={logOut} className='fixed bottom-12 right-8 text-red text-4xl pointer' />
-        <div className="bg-gradient-to-r from-cyan-500 to-blue-500 pl-20">
-          <span className="text-white">Next page :</span>
-          <button onClick={fetchNextPage} value="2" className=" bg-gradient-to-r mb-1 from-green-300 via-blue-500 to-purple-600 text-white rounded-lg py-1 px-4 mx-4 font-semibold">2</button>
-          <button onClick={fetchNextPage} value="3" className=" bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 text-white rounded-lg py-1 px-4 mx-4 font-semibold">3</button>
-          <button onClick={fetchNextPage} value="4" className=" bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 text-white rounded-lg py-1 px-4 mx-4 font-semibold">4</button>
-          <button onClick={fetchNextPage} value="5" className=" bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 text-white rounded-lg py-1 px-4 mx-4 font-semibold">5</button>
-        </div>
-      </div>
       {
         loader ? <Loader /> : <></>
       }
@@ -267,4 +301,12 @@ const Institute = () => {
   )
 }
 
-export default Institute
+
+export default function Institute() {
+  return (
+      <>
+          <InstituteRender color="pink" />;
+      </>
+  );
+}
+
