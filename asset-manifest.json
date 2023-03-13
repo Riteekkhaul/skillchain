@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/skillchain/static/css/main.760c4e59.css",
-    "main.js": "/skillchain/static/js/main.b084b792.js",
+    "main.css": "/skillchain/static/css/main.b7cc3189.css",
+    "main.js": "/skillchain/static/js/main.8ae1f04a.js",
     "static/js/787.034439c6.chunk.js": "/skillchain/static/js/787.034439c6.chunk.js",
     "static/media/profile.png": "/skillchain/static/media/profile.a5f4fbbf26a14e3ad096.png",
     "static/media/bac1.jpg": "/skillchain/static/media/bac1.431d6efd7d5d7fa1ecfc.jpg",
     "index.html": "/skillchain/index.html",
-    "main.760c4e59.css.map": "/skillchain/static/css/main.760c4e59.css.map",
-    "main.b084b792.js.map": "/skillchain/static/js/main.b084b792.js.map",
+    "main.b7cc3189.css.map": "/skillchain/static/css/main.b7cc3189.css.map",
+    "main.8ae1f04a.js.map": "/skillchain/static/js/main.8ae1f04a.js.map",
     "787.034439c6.chunk.js.map": "/skillchain/static/js/787.034439c6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.760c4e59.css",
-    "static/js/main.b084b792.js"
+    "static/css/main.b7cc3189.css",
+    "static/js/main.8ae1f04a.js"
   ]
 }
