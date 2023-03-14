@@ -261,30 +261,34 @@ const InstituteRender = ({ color }) => {
                                     </div>
                                 </div>
                                 <div className={openTab === 2 ? "block" : "hidden"} id="link2">
-                                    <div className="bg-white flex flex-col w-80 border border-gray-900 rounded-lg px-8 mb-12 ">
-                                        <form className="flex flex-col space-y-4" onSubmit={createCert}>
+                                    <div className="bg-gray-100 flex flex-col border border-gray-900 rounded-lg mx-32 mt-8 pb-8 mb-24">
+                                      <p className="text-2xl text-gray-600 font-bold m-4">Enter Candidate Details :</p>
+                                        <form className="flex flex-row flex-wrap mx-4" onSubmit={createCert}>
                                             <input type="text"
                                                 name='candidateName'
                                                 value={formData.candidateName}
                                                 onChange={handleChange}
-                                                placeholder="Candidate Name" className="border rounded-lg py-3 px-3 mt-2 bg-black border-indigo-600 placeholder-white-500 text-white" />
+                                                placeholder="Candidate Name" className="border rounded-lg py-3 px-3 w-2/5 m-4 ml-12 bg-gray-200 border-indigo-600 placeholder-gray-500 text-black" />
                                             <input type="text"
                                                 onChange={handleChange}
                                                 name='course'
-                                                value={formData.course} placeholder="Course Name" className="border rounded-lg py-3 px-3 bg-black border-indigo-600 placeholder-white-500 text-white" />
+                                                value={formData.course} placeholder="Course Name" className="border w-2/5 rounded-lg m-4 ml-12 px-3 bg-gray-200 border-indigo-600 placeholder-gray-500 text-black" />
                                             <input type="text"
                                                 onChange={handleChange}
                                                 name='companyName'
-                                                value={formData.companyName} placeholder="Company / Institute" className="border rounded-lg py-3 px-3 mt-2 bg-black border-indigo-600 placeholder-white-500 text-white" />
+                                                value={formData.companyName} placeholder="Company / Institute" className="border w-2/5 rounded-lg py-3 px-3 ml-12 m-4 bg-gray-200 border-indigo-600 placeholder-gray-500 text-black" />
                                             <input type="number"
                                                 onChange={handleChange}
                                                 name='duration'
-                                                value={formData.duration} placeholder="Course Duration in months" className="border rounded-lg py-3 px-3 mt-2 bg-black border-indigo-600 placeholder-white-500 text-white" />
+                                                value={formData.duration} placeholder="Course Duration in months" className="border w-2/5 rounded-lg py-3 px-3 m-4 ml-12 bg-gray-200 border-indigo-600 placeholder-gray-500 text-black" />
                                             <input type="date"
                                                 onChange={handleChange}
                                                 name='date'
-                                                value={formData.date} placeholder="Date of issue" className="border rounded-lg py-3 px-3 mt-2 bg-white border-indigo-600 placeholder-white-500 text-white" />
-                                            <button type="submit" className=" bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 text-white rounded-lg py-3 font-semibold" >Create Certificates</button> <br />
+                                                value={formData.date} placeholder="Date of issue" className="border rounded-lg py-3 w-2/5 px-3 m-4 ml-12 bg-gray-200 border-indigo-600 placeholder-gray-500 text-black" />
+                                            {/* <button type="submit" className=" bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 text-white rounded-lg ml-4 px-8 font-semibold" >Create Certificates</button>
+                                            <button type="submit" className="bg-teal-400 hover:bg-teat-600 text-white rounded-lg px-8 ml-4 font-semibold" >Clear</button> */}
+                                            <button className=" px-8 font-bold text-xl text-white bg-purple-500 hover:bg-purple-600 m-4 ml-12 rounded-lg">Create Certificate</button>
+                                            <button className=" px-12 font-bold text-xl text-white bg-teal-400 hover:bg-teal-600 m-4 ml-6 rounded-lg" >Clear</button>
                                         </form>
                                     </div>
                                 </div>
