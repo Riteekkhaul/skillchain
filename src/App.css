@@ -23,13 +23,13 @@
     font-style: italic;
   }
   #certcon{
-    background-image: url("/public/certback1.jpg");
+    background-image: url("/public/certBackTemp.png");
     background-repeat: no-repeat;
-    background-size: 740px 480px;
+    background-size: 725px 460px;
   }
 
   #certcon2{
-    background-image: url("/public/certback1.jpg");
+    background-image: url("/public/certBackTemp.png");
     background-repeat: no-repeat;
-    background-size: 600px 400px;
+    background-size: 100% 100%;
   }
