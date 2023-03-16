@@ -52,9 +52,9 @@ const Benefits = ({ color }) => {
               </a>
             </li>
           </ul>
-          <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
-            <div className="px-4 py-5 flex-auto">
-              <div className="tab-content tab-space">
+          <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded transition duration-500 hover:scale-110">
+            <div className="px-4 py-5 flex-auto ">
+              <div className="tab-content tab-space ">
                 <div className={openTab === 1 ? "block" : "hidden"} id="link1">
                  <h3 className="font-bold text-2xl text-center">Save time and money with automation</h3>
                   <p className="px-20 py-4">

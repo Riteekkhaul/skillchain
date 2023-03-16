@@ -251,7 +251,7 @@ const InstituteRender = ({ color }) => {
                             <div className="tab-content tab-space">
                                 <div className={openTab === 1 ? "block" : "hidden"} id="link1">
                                     <Certicard certificates={certificates} />
-                                    <div className="mt-8 pl-8">
+                                    <div className="mt-8 pl-8 mb-8">
                                         <span className="text-white">Page No. :</span>
                                         <button onClick={fetchNextPage} value="0" className=" bg-gradient-to-r mb-1 from-green-300 via-blue-500 to-purple-600 text-white rounded-lg py-1 px-4 mx-4 font-semibold">1</button>
                                         <button onClick={fetchNextPage} value="2" className=" bg-gradient-to-r mb-1 from-green-300 via-blue-500 to-purple-600 text-white rounded-lg py-1 px-4 mx-4 font-semibold">2</button>
@@ -261,7 +261,7 @@ const InstituteRender = ({ color }) => {
                                     </div>
                                 </div>
                                 <div className={openTab === 2 ? "block" : "hidden"} id="link2">
-                                    <div className="bg-gray-100 flex flex-col border border-gray-900 rounded-lg mx-32 mt-8 pb-8 mb-24">
+                                    <div className="bg-gray-100 flex flex-col border border-gray-900 rounded-lg mx-32 mt-8 pb-8 mb-28">
                                       <p className="text-2xl text-gray-600 font-bold m-4">Enter Candidate Details :</p>
                                         <form className="flex flex-row flex-wrap mx-4" onSubmit={createCert}>
                                             <input type="text"

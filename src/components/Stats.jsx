@@ -18,7 +18,7 @@ const Stats = () => {
                 <div class="mt-8 sm:mt-12">
                     <dl class="grid grid-cols-1 gap-4 sm:grid-cols-3 ">
                         <div
-                            class="flex flex-col shadow-md shadow-gray-500 rounded-lg border border-gray-100 px-4 py-8 text-center dark:border-gray-800"
+                            class="flex flex-col shadow-md shadow-gray-500 rounded-lg border border-gray-100 px-4 py-8 text-center dark:border-gray-800 transition duration-500 hover:scale-110"
                         >
                             <dt class="order-last text-lg font-medium text-gray-500 dark:text-gray-400">
                                 Total Certificates generated
@@ -30,7 +30,7 @@ const Stats = () => {
                         </div>
 
                         <div
-                            class="flex flex-col shadow-md shadow-gray-500 rounded-lg border border-gray-100 px-4 py-8 text-center dark:border-gray-800"
+                            class="flex flex-col shadow-md shadow-gray-500 rounded-lg border border-gray-100 px-4 py-8 text-center dark:border-gray-800 transition duration-500 hover:scale-110"
                         >
                             <dt
                                 class="order-last text-lg font-medium text-gray-500 dark:text-gray-400"
@@ -42,7 +42,7 @@ const Stats = () => {
                         </div>
 
                         <div
-                            class="flex flex-col shadow-md shadow-gray-500 rounded-lg border border-gray-100 px-4 py-8 text-center dark:border-gray-800"
+                            class="flex flex-col shadow-md shadow-gray-500 rounded-lg border border-gray-100 px-4 py-8 text-center dark:border-gray-800 transition duration-500 hover:scale-110"
                         >
                             <dt
                                 class="order-last text-lg font-medium text-gray-500 dark:text-gray-400"

@@ -13,19 +13,19 @@ const Testimonials = () => {
                 <div
                     class="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-16 lg:grid-cols-3"
                 >
-                    <div>
+                    <div className='transition duration-500 hover:scale-110'>
                         <img
                             alt="Woman"
-                            src="https://images.unsplash.com/photo-1599566219227-2efe0c9b7f5f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjIa43HstgiuLh1BfKxUq4v4V3Foxmt_nAq3YxJoNyYPJyWAAL8bpP1KsxBCweMjKb-xw&usqp=CAU"
                             class="mx-auto h-24 w-24 rounded-full object-cover shadow-xl"
                         />
 
                         <blockquote
                             class="-mt-6 flex flex-col justify-between rounded-lg p-12 text-center shadow-xl"
                         >
-                            <p class="text-lg font-bold text-gray-700">Sophie Lennon</p>
+                            <p class="text-lg font-bold text-gray-700">PrimaThink Technologies</p>
                             <p class="mt-1 text-xs font-medium text-gray-500">
-                                Digital Marketing at Studio
+                            Full-Stack Digital Transformation Company
                             </p>
                             <p class="mt-4 text-sm text-gray-500">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt
@@ -87,19 +87,19 @@ const Testimonials = () => {
                         </blockquote>
                     </div>
 
-                    <div>
+                    <div className='transition duration-500 hover:scale-110'>
                         <img
                             alt="Woman"
-                            src="https://images.unsplash.com/photo-1599566219227-2efe0c9b7f5f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_s0bdacJM6jMRSVGCDI8x-Pujlqz-_7aZEtaY4UstArIxYAs2LU3tNH61wVxPpZNICKs&usqp=CAU"
                             class="mx-auto h-24 w-24 rounded-full object-cover shadow-xl"
                         />
 
                         <blockquote
                             class="-mt-6 flex flex-col justify-between rounded-lg p-12 text-center shadow-xl"
                         >
-                            <p class="text-lg font-bold text-gray-700">Sophie Lennon</p>
+                            <p class="text-lg font-bold text-gray-700">Coursera</p>
                             <p class="mt-1 text-xs font-medium text-gray-500">
-                                Digital Marketing at Studio
+                            Online course Platform
                             </p>
                             <p class="mt-4 text-sm text-gray-500">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt
@@ -161,19 +161,19 @@ const Testimonials = () => {
                         </blockquote>
                     </div>
 
-                    <div>
+                    <div className='transition duration-500 hover:scale-110'>
                         <img
                             alt="Woman"
-                            src="https://images.unsplash.com/photo-1599566219227-2efe0c9b7f5f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+                            src="https://youceed.com/assets/mUpload/1588578966qigpiu6kicm4phqbi2il.png"
                             class="mx-auto h-24 w-24 rounded-full object-cover shadow-xl"
                         />
 
                         <blockquote
                             class="-mt-6 flex flex-col justify-between rounded-lg p-12 text-center shadow-xl"
                         >
-                            <p class="text-lg font-bold text-gray-700">Sophie Lennon</p>
+                            <p class="text-lg font-bold text-gray-700">Coding Ninja</p>
                             <p class="mt-1 text-xs font-medium text-gray-500">
-                                Digital Marketing at Studio
+                              Training and Code Learning Platform 
                             </p>
                             <p class="mt-4 text-sm text-gray-500">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt

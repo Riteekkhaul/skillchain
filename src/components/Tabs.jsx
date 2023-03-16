@@ -74,21 +74,21 @@ const Tabs = ({ color }) => {
           <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
             <div className="px-4 py-5 flex-auto">
               <div className="tab-content tab-space">
-                <div className={openTab === 1 ? "block" : "hidden"} id="link1">
+                <div className={openTab === 1 ? "block transition duration-500 hover:scale-110" : "hidden"} id="link1" >
                   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwuv-vUSN53XBsXHJPQNkgVGWWmdLoWCtTiN3pg96AKOqeJuBf" alt="form" className=" m-auto" />
                   <p className="px-20 py-4">
                   Generating certificate will also upload it to blockchain via a smart contract henceforth making 
                   it immutable and can't be forged. Download and hare the link directly. Anybody can validate and verify the certificate with custom QR code on it.
                   </p>
                 </div>
-                <div className={openTab === 2 ? "block" : "hidden"} id="link2">
+                <div className={openTab === 2 ? "block transition duration-500 hover:scale-110" : "hidden"} id="link2">
                   <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSv6g1dx2xtFdzoMwrTXgtL03Z_n6h_6kQqgDR8Qy_44O5Q2K-l" alt="verify" className=" m-auto" />
                   <p className="px-20">
                   Verifying or Validating has become a lot easier with blockchain integration. Each certificate 
                   transaction hash remains forever on the blockchain network and be verified or validated by anybody.
                   </p>
                 </div>
-                <div className={openTab === 3 ? "block" : "hidden"} id="link3">
+                <div className={openTab === 3 ? "block transition duration-500 hover:scale-110" : "hidden"} id="link3">
                   <img src="https://blog.apnic.net/wp-content/uploads/2020/03/Revoke_Banner-555x202.png?v=fb2569fa9a869d6b71c10f346b994930" alt="revoke"  className=" m-auto h-52" />
                   <p className="px-20 py-4">
                   You can also revoke or re-issue certificates with a single click without having to gothrough long 

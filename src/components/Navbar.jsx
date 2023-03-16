@@ -11,7 +11,7 @@ const Navbar = () => {
   return (
     <nav class="flex flex-wrap border bg-gradient-to-r from-cyan-500 to-blue-500 p-2">
       <div class="flex items-center flex-shrink-0 text-white mr-6">
-        <span class="font-semibold text-xl pl-8 tracking-tight">Cert-Chain</span>
+        <span class="font-semibold text-2xl pl-8 tracking-tight transform transition duration-500 hover:scale-110 ">Cert-Chain</span>
       </div>
       <div class="flex lg:hidden">
         <button class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
@@ -31,45 +31,45 @@ const Navbar = () => {
              to="/skillchain"
             class="block mt-4 lg:inline-block lg:mt-0 text-2xl text-teal-200 hover:text-white mr-4"
           >
-            <AiOutlineHome />
+            <AiOutlineHome className="transform transition duration-500 hover:scale-110 " />
           </Link>
           <Link
              to="/help"
             class="block mt-4 lg:inline-block lg:mt-0 text-2xl text-teal-200 hover:text-white mr-4"
           >
-            <BiHelpCircle />
+            <BiHelpCircle  className="transform transition duration-500 hover:scale-110 " />
           </Link>
           <Link
             to="/mail"
             class="block mt-4 lg:inline-block lg:mt-0 text-2xl text-teal-200 hover:text-white"
           >
-          < GoMail />
+          < GoMail className="transform transition duration-500 hover:scale-110 " />
           </Link>
           <Link
             to="/newslater"
             class="block mt-4 ml-4 lg:inline-block lg:mt-0 text-2xl text-teal-200 hover:text-white"
           >
-             <AiOutlineNotification/>
+             <AiOutlineNotification className="transform transition duration-500 hover:scale-110 " />
           </Link>
           <Link
             to="/about"
             class="block mt-4 ml-4 lg:inline-block lg:mt-0 text-2xl text-teal-200 hover:text-white"
           >
-             <BsInfoCircle/>
+             <BsInfoCircle className="transform transition duration-500 hover:scale-110 " />
           </Link>
         </div>
         <div>
           <Link
             to="/company_login"
-            class="inline-block text-xl px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 mx-4 lg:mt-0"
+            class="inline-block text-xl px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 transform transition duration-500 hover:scale-110 hover:bg-white mt-4 mx-4 lg:mt-0"
           >
-            <FaRegBuilding/>
+            <FaRegBuilding className="transform transition duration-500 hover:scale-110 " />
           </Link>
           <Link
             to="/admin_login"
-            class="inline-block text-xl px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0"
+            class="inline-block text-xl px-4 py-2 transform transition duration-500 hover:scale-110  leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0"
           >
-            <RiAdminLine/>
+            <RiAdminLine className="transform transition duration-500 hover:scale-110 " />
           </Link>
         </div>
       </div>

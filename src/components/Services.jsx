@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 const Services = () => {
     return (
@@ -16,7 +17,7 @@ const Services = () => {
                 <div class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
 
                     <a
-                        class="block rounded-xl bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10"
+                        class="block rounded-xl bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 border border-gray-800 p-8 shadow-xl transition duration-500 hover:scale-110  hover:border-pink-500/10 hover:shadow-pink-500/10"
                         href="/services/digital-campaigns"
                     >
                         <h2 class="mb-4 text-xl font-bold text-center text-white">Temper Resistance</h2>
@@ -27,7 +28,7 @@ const Services = () => {
                     </a>
 
                     <a
-                        class="block rounded-xl border border-gray-800 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10"
+                        class="block rounded-xl border border-gray-800 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-8 shadow-xl transition duration-500 hover:scale-110  hover:border-pink-500/10 hover:shadow-pink-500/10"
                         href="/services/digital-campaigns"
                     >
                         <h2 class="mb-4 text-xl font-bold text-center text-white">Proof Of Exixtance</h2>
@@ -39,7 +40,7 @@ const Services = () => {
                     </a>
 
                     <a
-                        class="block rounded-xl border border-gray-800 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10"
+                        class="block rounded-xl border border-gray-800 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-8 shadow-xl transition duration-500 hover:scale-110  hover:border-pink-500/10 hover:shadow-pink-500/10"
                         href="/services/digital-campaigns"
                     >
                         <h2 class="mb-4 text-xl font-bold text-center text-white">Trust</h2>
@@ -52,11 +53,10 @@ const Services = () => {
                 </div>
 
                 <div class="mt-12 text-center">
-                    <a
-                        href="#"
-                        class="mt-8 inline-flex items-center rounded border border-pink-600 bg-pink-600 px-8 py-3 text-white hover:bg-transparent focus:outline-none focus:ring active:text-pink-500"
+                    <Link to="/mail"
+                        class="mt-8 cursor-pointer inline-flex items-center rounded border border-pink-600 bg-pink-600 px-8 py-3 text-white transition duration-500 hover:scale-110  hover:bg-transparent focus:outline-none focus:ring active:text-pink-500"
                     >
-                        <span class="text-sm font-medium"> Get Started </span>
+                        <span class="text-sm font-medium "> Get Started </span>
 
                         <svg
                             class="ml-3 h-5 w-5"
@@ -72,7 +72,7 @@ const Services = () => {
                                 d="M17 8l4 4m0 0l-4 4m4-4H3"
                             />
                         </svg>
-                    </a>
+                    </Link>
                 </div>
             </div>
         </section>
