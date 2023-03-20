@@ -18,8 +18,8 @@ const InstituteRender = ({ color }) => {
   const [loader, setLoader] = useState(false);
   const [certificates, setCertificates] = useState([]);
   const [companyData, setcompanyData] = useState(JSON.parse(localStorage.getItem('company')));
-  const [web3, setWeb3] = useState(null);
   const [contract, setContract] = useState(null);
+  const [myAccount, setMyAccount] = useState("");
 
   const [formData, setFormData] = useState({
     candidateName: "",
@@ -31,19 +31,48 @@ const InstituteRender = ({ color }) => {
   });
   const navigate = useNavigate();
 
+  const isMetaMaskInstalled = () => {
+    const { ethereum } = window;
+    return Boolean(ethereum && ethereum.isMetaMask);
+  };
+
+  const ConnectWallet=async()=>{
+    const accounts = await window.ethereum.enable();
+     const account = accounts[0];
+     setMyAccount(account);
+   //  console.log(myAccount);
+  }
+
   const initWeb3 = async () => {
-    // Connect to the Ethereum network
-    //const web3 = new Web3(new Web3.providers.HttpProvider("https://goerli.infura.io/v3/25e446fb272c4971aa6ea2912eb09e59"));
-    const web3 = new Web3(new Web3.providers.HttpProvider("HTTP://127.0.0.1:7545"));
-    web3.eth.defaultAccount = web3.eth.accounts[0];
-    const RemixContract = new web3.eth.Contract(
+    
+
+    if(isMetaMaskInstalled()==true){
+
+    // Connect to the Ethereum (goerli) network
+
+    const newWeb3 = new Web3(new Web3.providers.HttpProvider("https://goerli.infura.io/v3/25e446fb272c4971aa6ea2912eb09e59"));
+    const ContractInstance = new newWeb3.eth.Contract(
       abi,
-      // "0x42a738d275bCf952cFd3F77037932c6fcD7dee85"  
-      "0xb31e01B6D9C28856DdC51e1127500Ed8EAa204cf"  // ganache contract  address
+      "0x42a738d275bCf952cFd3F77037932c6fcD7dee85"  //goerli contract address
     );
-    setWeb3(web3);
-    setContract(RemixContract);
-    // console.log(contract);
+    // setContract(ContractInstance);
+    console.log(ContractInstance);
+
+   // Connect to the Ganache Test network   
+
+      const web3 = new Web3(new Web3.providers.HttpProvider("HTTP://127.0.0.1:7545"));
+      const RemixContract = new web3.eth.Contract(
+        abi,
+        "0xb31e01B6D9C28856DdC51e1127500Ed8EAa204cf"  // ganache contract  address
+      );
+      setContract(RemixContract);
+      console.log(RemixContract);
+
+    }
+    else{
+       alert("Metamask Extension is Not installed!... We recommend you too install it first.");
+       return 
+    }
   }
 
   const handleChange = (event) => {
@@ -135,11 +164,8 @@ const InstituteRender = ({ color }) => {
         candidateName, companyId, companyName, course, duration, date,
       });
 
-      console.log(response.data.result);
+    //  console.log(response.data.result);
       alert("Certificate Created Successfully!");
-      const accounts = await window.ethereum.enable();
-      const account = accounts[0];
-      console.log(account)
 
       // publishing on blockchain
       const certificateParams = {
@@ -159,7 +185,7 @@ const InstituteRender = ({ color }) => {
         certificateParams._date,
         certificateParams._duration
       ).send({
-        from: account,
+        from: myAccount,
         gas: 300000
       });
 
@@ -261,8 +287,15 @@ const InstituteRender = ({ color }) => {
                                     </div>
                                 </div>
                                 <div className={openTab === 2 ? "block" : "hidden"} id="link2">
-                                    <div className="bg-gray-100 flex flex-col border border-gray-900 rounded-lg mx-32 mt-8 pb-8 mb-28">
-                                      <p className="text-2xl text-gray-600 font-bold m-4">Enter Candidate Details :</p>
+                                    <div className="bg-gray-100 flex flex-col border border-gray-900 rounded-lg mx-32 mt-8 pb-8 mb-12">
+                                      <p className="text-xl text-gray-600 font-bold m-4" >Account Address : {myAccount} 
+                                      {
+                                        myAccount ?  <span  className="bg-green-400 text-white py-2 px-2 rounded-lg ml-4">Connected</span> 
+                                        :
+                                        <button onClick={ConnectWallet} className="bg-blue-500 text-white py-2 px-2 rounded-lg ">Connect Wallet</button> 
+                                      }
+                                     </p>
+                                      <p className="text-2xl text-gray-600 font-bold m-4">Enter Candidate Details : </p>
                                         <form className="flex flex-row flex-wrap mx-4" onSubmit={createCert}>
                                             <input type="text"
                                                 name='candidateName'
