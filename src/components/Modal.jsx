@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState,useRef ,useEffect } from 'react';
 import Web3 from "web3";
+import ReactToPrint from 'react-to-print';
 import { abi } from "../utils";
 
 
 const Modal = ({ isOpen, setIsOpen, currentCert }) => {
 
+  const ref = useRef();
   const [blockData, setblockData] = useState({});
   const [isValid, setisValid] = useState(false);
   const [revoked, setrevoked] = useState(false);
@@ -75,7 +77,7 @@ const Modal = ({ isOpen, setIsOpen, currentCert }) => {
           >
             <div className='flex bg-white w-full'>
               {/* certificate */}
-              <div id="certcon2" className="w-3/5 pt-12 pb-4 h-auto bg-white border border-black text-center box-border">
+              <div ref={ref} id="certcon2" className="w-3/5 pt-12 pb-4 h-auto bg-white border border-black text-center box-border">
                 <p className="mt-20 font-bold text-2xl ">{currentCert.candidateName}  </p>
                 <p className="mt-4 ml-8 pl-8 font-bold text-xl capitalize">{currentCert.course} </p>
                 <div className="text-lg mt-12 flex">
@@ -112,8 +114,12 @@ const Modal = ({ isOpen, setIsOpen, currentCert }) => {
             {/* three buttons */}
 
             <div className="mt-5 sm:mt-6">
-              <button type="button" className="text-white ml-12 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Print Certificate</button>
-              <button type="button" className="focus:outline-none text-white ml-20 bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Verify Transaction On Etherscan</button>
+            <ReactToPrint
+             trigger={() =>  <button type="button" className="text-white ml-12 bg-blue-700
+             hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Print Certificate</button>}
+             content={() => ref.current}
+            />   
+              <button type="button" onClick={verifyOnEtherscan} className="focus:outline-none text-white ml-20 bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Verify Transaction On Etherscan</button>
               <button onClick={validateCert}
                 className="px-4 py-2 ml-32 tracking-wide text-white transition-colors duration-200 transform bg-purple-600
               rounded-md hover:bg-purple-700 focus:outline-none focus:bg-purple-600" >Validate Certificate</button>

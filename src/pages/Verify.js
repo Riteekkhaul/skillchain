@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
+import ReactToPrint from 'react-to-print';
 import Certificate from '../components/Certificate';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
@@ -9,22 +10,12 @@ import { abi } from "../utils";
 const Verify = () => {
 
   const navigate = useNavigate();
-  const [hide, sethide] = useState(false);
+  const ref = useRef();
   const [certDetails, setCertDetails] = useState({});
   const [blockData, setblockData] = useState({});
   const [validated, setvalidated] = useState(false);
   const [isValid, setisValid] = useState(false);
   const [revoked, setrevoked] = useState(false);
-
-  const PrintCert = () => {
-    sethide(true);
-    setTimeout(pdf, 3000);
-   }
-
-  const pdf = () => {
-    window.print();
-    sethide(false);
-   }
 
   const getCertData = async () => {
 
@@ -81,8 +72,7 @@ const Verify = () => {
     <>
       <Navbar />
       <div className="flex h-auto bg-gradient-to-r from-cyan-500 to-blue-500">
-        <Certificate certData={certDetails} />
-        {hide ? <><span>Not visible bro...</span></> : <>
+        <Certificate certData={certDetails} ref={ref} />
           <div className="w-96 h-auto mx-8 bg-white border border-black mt-4 mb-20 p-8 box-border">
             <h3 className='mb-4 bg-gray-200 rounded-md px-2'> Data Fetched from Blockchain for Certificate Id <span className='font-bold'> {certDetails._id} </span></h3>
             <p> Candidate Name : {blockData.candidateName} </p>    
@@ -111,14 +101,16 @@ const Verify = () => {
               rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">Validate Certificate</button>
             }
            <br/>
-           <button type="button" onClick={PrintCert} class="text-white bg-blue-700 mt-2 hover:bg-blue-800 focus:ring-4 
-        focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 
-        focus:outline-none dark:focus:ring-blue-800">Print Certificate</button>
-            <button type="button" onClick={verifyOnEtherscan} class="focus:outline-none text-white bg-green-700 
+           <ReactToPrint
+             trigger={() => <button type="button"  className="text-white bg-blue-700 mt-2 hover:bg-blue-800 focus:ring-4 
+             focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 
+             focus:outline-none dark:focus:ring-blue-800">Print Certificate</button>}
+             content={() => ref.current}
+            />   
+            <button type="button" onClick={verifyOnEtherscan} className="focus:outline-none text-white bg-green-700 
         hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mt-2 mr-2 
         dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Verify Transaction On Etherscan</button>
           </div>
-          </>}
       </div>
     </>
   )

@@ -14,7 +14,6 @@ import Help from './pages/Help';
 import Notify from './components/Notify';
 import About from './pages/About';
 
-
 function App() {
  
   return (
@@ -33,7 +32,6 @@ function App() {
         <Route path='/help' element={<Help />} />
         <Route path='/about' element={<About />} />
         <Route path='/newslater' element={<Notify />} />
-      
        </Routes>
     </div>
   );

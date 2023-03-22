@@ -1,11 +1,12 @@
 import React from "react";
 import '../App.css';
 
-function Certificate({ certData }) {
- 
+const Certificate=React.forwardRef((props, ref) =>  {
+   
+  const certData = props.certData;
   return (
     <>
-      <div id="certcon" className="mt-4 mb-20 pt-20 pb-4 mx-auto bg-white border border-black text-center  box-border">
+      <div ref={ref} id="certcon" className="mt-4 mb-20 pt-20 pb-4 mx-auto bg-white border border-black text-center  box-border">
         <p className="mt-20 font-bold text-2xl ">{certData.candidateName}  </p>
         <p className="mt-4 ml-4 pl-8 font-bold text-xl capitalize">{certData.course} </p>
         <div className="text-lg mt-16 flex">
@@ -17,6 +18,6 @@ function Certificate({ certData }) {
       </div>
     </>
   );
-}
+});
 
 export default Certificate;
