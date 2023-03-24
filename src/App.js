@@ -21,10 +21,9 @@ function App() {
     <div className="app ">
        <Routes>
         <Route path='/skillchain' element={<HomePage />} />
-        <Route path='/institute' element={<Institute />} />
+        <Route path='/institute' element={ <Institute />} />
         <Route path='/admin' element={<Admin />} />
         <Route path='/verify' element={<Verify />} />
-        <Route path='cert' element={<Certificate />} />
         <Route path='/admin_login' element={<Admin_login />} />
         <Route path='/company_login' element={<Company_login />} />
         <Route path='*' element={<PageNotFound />} />

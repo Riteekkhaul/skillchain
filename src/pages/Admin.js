@@ -33,7 +33,7 @@ const Admin = () => {
 
   const checkAuth =()=>{
  //   console.log(localStorage.getItem("cert_token"))
-    if(localStorage.getItem("cert_token")==undefined || localStorage.getItem("cert_token")==null ){
+    if(localStorage.getItem("admin_token")==undefined || localStorage.getItem("admin_token")==null ){
       navigate("/admin_login");
     }
     else{
@@ -117,7 +117,7 @@ const Admin = () => {
   }
 
   const logOut=()=>{
-    localStorage.clear();
+    localStorage.removeItem('admin_token');
     setStatus(true);
     setType("success");
     setTitle("Logged Out Successfully!");

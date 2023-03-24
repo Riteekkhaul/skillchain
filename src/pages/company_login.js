@@ -46,7 +46,7 @@ const Company_Login=()=> {
      const token  =  response.data.token;
  
      //set JWT token to local
-     localStorage.setItem("cert_token", token);
+     localStorage.setItem("company_token", token);
      setStatus(true);
      setType("success");
      setTitle("Logged in success!");

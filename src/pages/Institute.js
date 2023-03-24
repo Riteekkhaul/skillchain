@@ -84,8 +84,7 @@ const InstituteRender = ({ color }) => {
   };
 
   const checkAuth = () => {
-
-    if (localStorage.getItem("cert_token") == undefined || localStorage.getItem("cert_token") == null) {
+    if (localStorage.getItem("company_token") == undefined || localStorage.getItem("company_token") == null) {
       navigate("/company_login");
     }
     else {
@@ -94,7 +93,8 @@ const InstituteRender = ({ color }) => {
   }
 
   const logOut = () => {
-    localStorage.clear();
+    localStorage.removeItem('company_token');
+    localStorage.removeItem('company');
     alert("Logged Out Successfully!")
     navigate("/company_login")
   }

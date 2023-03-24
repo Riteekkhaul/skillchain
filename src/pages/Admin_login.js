@@ -44,7 +44,7 @@ const login = async (event) => {
     });
 
    // console.log(response.data.token);
-   localStorage.setItem("cert_token", response.data.token);
+   localStorage.setItem("admin_token", response.data.token);
     setStatus(true);
     setType("success");
     setTitle("Logged in success!");
