@@ -1,8 +1,32 @@
-import React from 'react'
+import React,{useState} from 'react'
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import emailjs from '@emailjs/browser';
 
 const Email = () => {
+
+    const initialState = {  name: "", email: "", phone:"", message: "" };
+    const [userData, setuserData] = useState(initialState);
+
+    const handleChange = (e) => {
+        setuserData({ ...userData, [e.target.name]: e.target.value });
+      };
+
+      const SendEmail=(e)=>{
+        e.preventDefault();
+     
+        console.log(userData);
+        emailjs.sendForm('service_gp7thku', 'template_58l10ty', e.target , '00JPgKkpAawmAdMFZ')
+          .then((result) => {
+              alert("Email sent successfully ✔");
+              setuserData(initialState);
+              console.log(result.text);
+          }, (error) => {
+              console.log(error.text);
+          });
+          e.target.reset();
+      }
+      
     return (
       <>
       <Navbar />
@@ -96,39 +120,47 @@ const Email = () => {
                     </div>
                     <div className="w-full px-4 lg:w-1/2 xl:w-5/12">
                         <div className="relative rounded-lg bg-white p-8 shadow-lg sm:p-12">
-                            <form>
+                            <form onSubmit={SendEmail}>
                                 <div className="mb-6">
                                     <input
                                         type="text"
+                                        name='name'
                                         placeholder="Your Name"
+                                        onChange={handleChange}
                                         className="text-body-color border-[f0f0f0] focus:border-primary w-full rounded border py-3 px-[14px] text-base outline-none focus-visible:shadow-none"
                                     />
                                 </div>
                                 <div className="mb-6">
                                     <input
                                         type="email"
+                                        name='email'
                                         placeholder="Your Email"
+                                        onChange={handleChange}
                                         className="text-body-color border-[f0f0f0] focus:border-primary w-full rounded border py-3 px-[14px] text-base outline-none focus-visible:shadow-none"
                                     />
                                 </div>
                                 <div className="mb-6">
                                     <input
                                         type="text"
+                                        name="phone"
                                         placeholder="Your Phone"
+                                        onChange={handleChange}
                                         className="text-body-color border-[f0f0f0] focus:border-primary w-full rounded border py-3 px-[14px] text-base outline-none focus-visible:shadow-none"
                                     />
                                 </div>
                                 <div className="mb-6">
                                     <textarea
                                         rows="6"
+                                        name='message'
                                         placeholder="Your Message"
+                                        onChange={handleChange}
                                         className="text-body-color border-[f0f0f0] focus:border-primary w-full resize-none rounded border py-3 px-[14px] text-base outline-none focus-visible:shadow-none"
                                     ></textarea>
                                 </div>
                                 <div>
                                     <button
                                         type="submit"
-                                        className="bg-violet border-yellow w-full rounded border p-3 text-white transition hover:bg-opacity-90"
+                                        className="bg-blue-600 border-yellow w-full rounded border p-3 text-white font-bold transition hover:bg-opacity-90"
                                     >
                                         Send Message
                                     </button>
