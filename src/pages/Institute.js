@@ -148,16 +148,27 @@ const InstituteRender = ({ color }) => {
     }
   }
 
+  const clearFields=()=>{
+    setFormData({
+        candidateName: "",
+        companyName: companyData.companyName,
+        course: "",
+        companyId: "",
+        duration: "",
+        date: new Date()
+      })
+  }
+
   const createCert = async (event) => {
     event.preventDefault();
     // console.log(formData);
-    setLoader(true);
     const { candidateName, companyId, companyName, course, duration, date } = formData;
 
     if (!candidateName || !companyName || !companyId || !course || !duration || !date) {
       alert("All fields are compulsory");
       return;
     }
+    setLoader(true);
 
     try {
       const response = await axios.post('https://skillchain.cyclic.app/api/v1/company/create_cert', {
@@ -208,11 +219,11 @@ const InstituteRender = ({ color }) => {
       alert("certificate created and published on blockchain successfully.")
       setFormData({
         candidateName: "",
-        companyName: "",
+        companyName: companyData.companyName,
         course: "",
         companyId: "",
         duration: "",
-        date: ""
+        date: new Date()
       })
       fetchCertificates();
 
@@ -320,8 +331,8 @@ const InstituteRender = ({ color }) => {
                                                 value={formData.date} placeholder="Date of issue" className="border rounded-lg py-3 w-2/5 px-3 m-4 ml-12 bg-gray-200 border-indigo-600 placeholder-gray-500 text-black" />
                                             {/* <button type="submit" className=" bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 text-white rounded-lg ml-4 px-8 font-semibold" >Create Certificates</button>
                                             <button type="submit" className="bg-teal-400 hover:bg-teat-600 text-white rounded-lg px-8 ml-4 font-semibold" >Clear</button> */}
-                                            <button className=" px-8 font-bold text-xl text-white bg-purple-500 hover:bg-purple-600 m-4 ml-12 rounded-lg">Create Certificate</button>
-                                            <button className=" px-12 font-bold text-xl text-white bg-teal-400 hover:bg-teal-600 m-4 ml-6 rounded-lg" >Clear</button>
+                                            <button type="submit" className=" px-8 font-bold text-xl text-white bg-purple-500 hover:bg-purple-600 m-4 ml-12 rounded-lg">Create Certificate</button>
+                                            <div onClick={clearFields} className=" px-12 pt-2 font-bold text-2xl cursor-pointer text-white bg-teal-400 hover:bg-teal-600 m-4 ml-6 rounded-lg" >Clear</div>
                                         </form>
                                     </div>
                                 </div>
